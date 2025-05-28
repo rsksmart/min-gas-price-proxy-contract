@@ -1,0 +1,22 @@
+{
+  "name": "min-gas-price-proxy-contract",
+  "version": "1.0.0",
+  "description": "This is a simple Min Gas price proxy contract used to get fiat stable gas price in the format expected by the RSKj node.",
+  "main": "index.js",
+  "scripts": {
+    "test": "hardhat test",
+    "deploy:rsktestnet": "hardhat run scripts/deploy-proxy.js --network rsktestnet",
+    "deploy:rskmainnet": "hardhat run scripts/deploy-proxy.js --network rskmainnet"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-network-helpers": "^1.0.12",
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "hardhat": "^2.24.1"
+  },
+  "dependencies": {
+    "dotenv": "^16.5.0"
+  }
+}
