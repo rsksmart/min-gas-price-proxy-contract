@@ -1,6 +1,9 @@
 node_modules
 .env
 
+# Mac files
+.DS_Store
+
 # Hardhat files
 /cache
 /artifacts

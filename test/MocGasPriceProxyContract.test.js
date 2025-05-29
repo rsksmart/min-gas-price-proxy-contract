@@ -1,4 +1,3 @@
-// test/MocGasPriceProxyContract.test.js
 const { expect } = require("chai");
 const { ethers } = require("hardhat");
 const { loadFixture } = require("@nomicfoundation/hardhat-network-helpers");
@@ -12,7 +11,7 @@ describe("MocGasPriceProxyContract", function () {
     await mock.setPrice(ethers.parseUnits("20000", "ether"));
 
     // dividing by 10^18 should give 20000
-    expect(await proxy.getConvertedPrice()).to.equal(20000n);
+    expect(await proxy.getConvertedPrice()).to.equal(20000);
   });
 
   it("reverts if deployed with the zero address", async function () {

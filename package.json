@@ -14,6 +14,7 @@
   "devDependencies": {
     "@nomicfoundation/hardhat-network-helpers": "^1.0.12",
     "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "@nomicfoundation/hardhat-verify": "^2.0.14",
     "hardhat": "^2.24.1"
   },
   "dependencies": {

@@ -1,4 +1,3 @@
-// test/fixtures.js
 const { ethers } = require("hardhat");
 
 async function deployMockMoCState() {
