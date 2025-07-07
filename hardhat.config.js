@@ -7,6 +7,8 @@ require("@nomicfoundation/hardhat-verify");
 const { MNEMONIC } = process.env;
 if (!MNEMONIC) throw new Error("Missing MNEMONIC in .env");
 
+const PRIVATE_KEY = process.env.PRIVATE_KEY;
+
 module.exports = {
   solidity: "0.8.25",
   defaultNetwork: "hardhat",
@@ -23,18 +25,14 @@ module.exports = {
     },
     rskmainnet: {
       url: "https://public-node.rsk.co",
-      chainId: 30, 
-      accounts: {
-        mnemonic: MNEMONIC,
-        initialIndex: 0,
-        count: 1
-      }
+      chainId: 30,
+      accounts: [PRIVATE_KEY]
     },
   },
   sourcify: {
     enabled: false
-  },  
-  etherscan: {    
+  },
+  etherscan: {
     apiKey: {
       rsktestnet: 'RSK_TESTNET_RPC_URL',
       rskmainnet: 'RSK_MAINNET_RPC_URL'
