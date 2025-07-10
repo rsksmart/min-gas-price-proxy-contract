@@ -37,14 +37,16 @@ npm install
 
 ## Configuration
 
-Create a file named `.env` in the project root with the MocState address for the network you are deploying. For example, for testnet:
+Create a file named `.env` in the project root with the required configuration. For example, for testnet:
 ```bash
 # .env
 MNEMONIC="your twelve-word wallet mnemonic"
 MOC_STATE_ADDR="0x0adb40132cB0ffcEf6ED81c26A1881e214100555"
+PRIVATE_KEY="your_private_key_here"
 ```
 
-- `MNEMONIC`: your wallet’s mnemonic (used by Hardhat to derive deployer account)  
+- `MNEMONIC`: your wallet’s mnemonic (used by Hardhat to derive deployer account for testnet)
+- `PRIVATE_KEY`: your wallet’s private key (used for mainnet deployment and balance verification)
 - `MOC_STATE_ADDR`: the address of the existing MoCState contract
 
 ---
@@ -76,20 +78,36 @@ networks: {
 
 ## Deployment
 
-To deploy the proxy pointing at MoCState in the Rootstock testnet:
+To deploy the proxy pointing at MoCState in the Rootstock testnet or mainnet, ensure your `.env` file contains the correct `PRIVATE_KEY` for the account you want to deploy from:
 
 ```bash
 npx hardhat run scripts/deploy-proxy.js --network rsktestnet
+# or for mainnet
+npx hardhat run scripts/deploy-proxy.js --network rskmainnet
 ```
 
-You’ll see an output like:
+The deployment script will use the private key from your `.env` file to deploy the contract. You’ll see an output like:
 
 ```
-🚀 Deploying proxy, pointing at MoCState: 0x...
+🚀 Deploying proxy with wallet: 0x...
+💰 Wallet balance: ... RBTC
+📋 Pointing at MoCState: 0x...
 ✅ Proxy deployed to: 0x...
 ```
 
 If you want to deploy at mainnet, just change to the mainnet configuration.
+
+---
+
+## Balance Verification
+
+You can verify the RBTC balance of your deployment account using the provided script:
+
+```bash
+node scripts/verify-balance.js
+```
+
+This script will print the address and the RBTC balance of the account associated with the `PRIVATE_KEY` in your `.env` file. This is useful to ensure your account has enough funds before deploying contracts.
 
 ---
 
